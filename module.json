@@ -1,0 +1,126 @@
+{
+  "name":"Bitwig",
+  "type":"OSC",
+  "path":"Software",
+  
+  "version":"0.0.1",
+  "description":"A Chataigne module to control Bitwig via OSC.",
+  "url":"https://github.com/yastefan/Bitwig-Chataigne-Module",
+  "downloadURL":"https://github.com/yastefan/Bitwig-Chataigne-Module/archive/refs/heads/main.zip",
+
+  "hasInput":true,
+  "hasOutput":true, 
+
+  "hideDefaultCommands":true,
+  
+  "defaults":
+  {	
+    "autoAdd":false,
+    "OSC Outputs": 
+    {
+      "OSC Output": { 
+        "local": true,
+        "remoteHost": "192.168.14.152",
+        "remotePort": 8000
+      }
+    },
+    "OSC Input": {
+      "enabled": true,
+      "localPort": 9000
+    }
+  },
+
+  "parameters":
+  {
+    "Resolution":
+    {
+      "type":"Enum",
+      "options": { "Low (127)": 127, "Medium (1024)": 1024, "High (16384)": 16384 }
+    },
+    "Add selected Device": {"type": "Trigger"}
+  },
+
+  "hideDefaultParameters": ["autoAdd", "colorSendMode", "useHierarchy", "autoFeedback", "booleanSendMode"],
+  "scripts": ["bitwig.js"],
+
+  "values":
+  {
+    "Transport": {
+      "type": "Container",
+      "collapsed": true,
+      "Is Playing": {"type": "Boolean"},
+      "BPM": {"type": "Float", "ui":"slider", "min":0, "max":999, "default":120, "mappingIndex": 0},
+      "Cur beat":  {"type": "Integer", "min":1, "max":4, "default":1, "description":"The current Beat"},
+      "Cur bar":  {"type": "Integer", "min":1, "default":1, "description":"The current Bar"}
+    },
+    "Project": {
+      "type": "Container",
+      "collapsed": true,
+      "Page":  {"type": "Integer", "min":1, "max":8, "default":1, "description":"The current Page"},
+      "Param 1": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 2": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 3": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 4": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 5": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 6": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 7": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      },
+      "Param 8": { 
+        "type": "Container",
+        "value": {"type": "Float", "min":0, "max":1, "default":0},
+        "modulated value": {"type": "Float", "min":0, "max":1, "default":0}
+      }
+      
+    },
+    "Meters": {
+      "type": "Container",
+      "collapsed": true,
+      "Master": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 1": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 2": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 3": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 4": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 5": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 6": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 7": {"type": "Float", "min":0, "max":1, "default":0},
+      "Track 8": {"type": "Float", "min":0, "max":1, "default":0}
+    }
+  },
+
+  "commands":
+  {
+   
+   "Add selected Device":
+    {
+      "menu":"",  
+      "callback":"addSelectedDevice"
+    }
+  }
+}
